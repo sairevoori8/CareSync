@@ -1,0 +1,1 @@
+CareSync is blockchain based record storage project
