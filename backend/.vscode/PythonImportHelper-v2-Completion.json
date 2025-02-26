@@ -1,0 +1,87 @@
+[
+    {
+        "label": "hashlib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "hashlib",
+        "description": "hashlib",
+        "detail": "hashlib",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "uuid4",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "Fernet",
+        "importPath": "cryptography.fernet",
+        "description": "cryptography.fernet",
+        "isExtraImport": true,
+        "detail": "cryptography.fernet",
+        "documentation": {}
+    },
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Blockchain",
+        "importPath": "blockchain",
+        "description": "blockchain",
+        "isExtraImport": true,
+        "detail": "blockchain",
+        "documentation": {}
+    },
+    {
+        "label": "Blockchain",
+        "importPath": "blockchain",
+        "description": "blockchain",
+        "isExtraImport": true,
+        "detail": "blockchain",
+        "documentation": {}
+    },
+    {
+        "label": "Block",
+        "kind": 6,
+        "importPath": "blockchain",
+        "description": "blockchain",
+        "peekOfCode": "class Block:\n    def __init__(self, index, previous_hash, timestamp, data, validator):\n        self.index = index\n        self.previous_hash = previous_hash\n        self.timestamp = timestamp\n        self.data = data\n        self.validator = validator\n        self.hash = self.calculate_hash()\n    def calculate_hash(self):\n        block_string = json.dumps(self.__dict__, sort_keys=True)",
+        "detail": "blockchain",
+        "documentation": {}
+    },
+    {
+        "label": "Blockchain",
+        "kind": 6,
+        "importPath": "blockchain",
+        "description": "blockchain",
+        "peekOfCode": "class Blockchain:\n    def __init__(self):\n        self.chain = [self.create_genesis_block()]\n        self.validators = set()\n        self.roles = {}\n        self.encryption_key = Fernet.generate_key()\n        self.cipher = Fernet(self.encryption_key)\n        self.nodes = set()\n    def create_genesis_block(self):\n        return Block(0, \"0\", time.time(), \"Genesis Block\", \"System\")",
+        "detail": "blockchain",
+        "documentation": {}
+    }
+]

@@ -69,5 +69,14 @@ class Blockchain:
                 continue
         return records
     
-    def register_node(self, node_address):
-        self.nodes.add(node_address)
+    def display_chain(self):
+        for block in self.chain[1:]:  
+            try:
+                decrypted_data = self.decrypt_data(block.data)
+                print(f"Index: {block.index}")
+                print(f"Hash: {block.hash}")
+                print(f"Data: {block.data}")
+                print("-" * 50)
+            except Exception as e:
+                print(f"Error decrypting block {block.index}: {e}")
+
