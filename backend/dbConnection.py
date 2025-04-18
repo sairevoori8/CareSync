@@ -4,10 +4,12 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv()
-SECRET_KEY=os.getenv("KEY")
+SECRET_KEY = os.getenv("KEY")
+mongourl = os.getenv("MongoConnection")
 
 def get_db():
-    uri = os.getenv("MongoConnection")
+    
+    uri = mongourl
     client = MongoClient(uri)
 
     try:

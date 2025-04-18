@@ -1,10 +1,9 @@
 from blockchain import Blockchain
-
 # Initialize blockchain
 blockchain = Blockchain()
 
 # Add a medical record
-"""print(blockchain.add_medical_record(
+print(blockchain.add_medical_record(
     patient_id="123456",
     full_name="John Doe",
     dob="1990-05-20",
@@ -26,5 +25,5 @@ blockchain = Blockchain()
 ))
 
 # Mine the block (store it in MongoDB)
-print(blockchain.mine_block())"""
-print(blockchain.get_block(2))
+print(blockchain.mine_block())
+print(blockchain.get_last_block())
