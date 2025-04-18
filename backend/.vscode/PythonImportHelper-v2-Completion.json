@@ -9,12 +9,12 @@
         "documentation": {}
     },
     {
-        "label": "time",
+        "label": "datetime",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "time",
-        "description": "time",
-        "detail": "time",
+        "importPath": "datetime",
+        "description": "datetime",
+        "detail": "datetime",
         "documentation": {}
     },
     {
@@ -27,11 +27,27 @@
         "documentation": {}
     },
     {
-        "label": "uuid4",
-        "importPath": "uuid",
-        "description": "uuid",
+        "label": "get_db",
+        "importPath": "dbConnection",
+        "description": "dbConnection",
         "isExtraImport": true,
-        "detail": "uuid",
+        "detail": "dbConnection",
+        "documentation": {}
+    },
+    {
+        "label": "get_cipher",
+        "importPath": "dbConnection",
+        "description": "dbConnection",
+        "isExtraImport": true,
+        "detail": "dbConnection",
+        "documentation": {}
+    },
+    {
+        "label": "MongoClient",
+        "importPath": "pymongo",
+        "description": "pymongo",
+        "isExtraImport": true,
+        "detail": "pymongo",
         "documentation": {}
     },
     {
@@ -43,35 +59,10 @@
         "documentation": {}
     },
     {
-        "label": "Flask",
-        "importPath": "flask",
-        "description": "flask",
-        "isExtraImport": true,
-        "detail": "flask",
-        "documentation": {}
-    },
-    {
         "label": "Blockchain",
         "importPath": "blockchain",
         "description": "blockchain",
         "isExtraImport": true,
-        "detail": "blockchain",
-        "documentation": {}
-    },
-    {
-        "label": "Blockchain",
-        "importPath": "blockchain",
-        "description": "blockchain",
-        "isExtraImport": true,
-        "detail": "blockchain",
-        "documentation": {}
-    },
-    {
-        "label": "Block",
-        "kind": 6,
-        "importPath": "blockchain",
-        "description": "blockchain",
-        "peekOfCode": "class Block:\n    def __init__(self, index, previous_hash, timestamp, data, validator):\n        self.index = index\n        self.previous_hash = previous_hash\n        self.timestamp = timestamp\n        self.data = data\n        self.validator = validator\n        self.hash = self.calculate_hash()\n    def calculate_hash(self):\n        block_string = json.dumps(self.__dict__, sort_keys=True)",
         "detail": "blockchain",
         "documentation": {}
     },
@@ -80,8 +71,44 @@
         "kind": 6,
         "importPath": "blockchain",
         "description": "blockchain",
-        "peekOfCode": "class Blockchain:\n    def __init__(self):\n        self.chain = [self.create_genesis_block()]\n        self.validators = set()\n        self.roles = {}\n        self.encryption_key = Fernet.generate_key()\n        self.cipher = Fernet(self.encryption_key)\n        self.nodes = set()\n    def create_genesis_block(self):\n        return Block(0, \"0\", time.time(), \"Genesis Block\", \"System\")",
+        "peekOfCode": "class Blockchain:\n    def __init__(self):\n        self.db = get_db()\n        self.collection = self.db[\"medicalrecords\"]\n        self.cipher = get_cipher()  # Get the cipher for encryption\n        self.chain = []\n        self.pending_records = []\n        if self.collection.count_documents({}) == 0:\n            self.create_genesis_block()\n        else:",
         "detail": "blockchain",
+        "documentation": {}
+    },
+    {
+        "label": "get_db",
+        "kind": 2,
+        "importPath": "dbConnection",
+        "description": "dbConnection",
+        "peekOfCode": "def get_db():\n    uri = \"mongodb+srv://revoorisaisujal:Saisujal@cluster0.gn1w3.mongodb.net/Medical?retryWrites=true&w=majority\"\n    client = MongoClient(uri)\n    try:\n        client.admin.command(\"ping\")\n        print(\"Connected to MongoDB successfully!\")\n    except Exception as e:\n        print(f\"An error occurred: {e}\")\n    db = client[\"Medical\"]\n    return db",
+        "detail": "dbConnection",
+        "documentation": {}
+    },
+    {
+        "label": "get_cipher",
+        "kind": 2,
+        "importPath": "dbConnection",
+        "description": "dbConnection",
+        "peekOfCode": "def get_cipher():\n    return Fernet(SECRET_KEY)",
+        "detail": "dbConnection",
+        "documentation": {}
+    },
+    {
+        "label": "SECRET_KEY",
+        "kind": 5,
+        "importPath": "dbConnection",
+        "description": "dbConnection",
+        "peekOfCode": "SECRET_KEY = b\"vZUuYfHnem5w6_JFw6cqSWrzAFPAYov8QP92KFEj8BQ=\"\ndef get_db():\n    uri = \"mongodb+srv://revoorisaisujal:Saisujal@cluster0.gn1w3.mongodb.net/Medical?retryWrites=true&w=majority\"\n    client = MongoClient(uri)\n    try:\n        client.admin.command(\"ping\")\n        print(\"Connected to MongoDB successfully!\")\n    except Exception as e:\n        print(f\"An error occurred: {e}\")\n    db = client[\"Medical\"]",
+        "detail": "dbConnection",
+        "documentation": {}
+    },
+    {
+        "label": "blockchain",
+        "kind": 5,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "blockchain = Blockchain()\n# Add a medical record\n\"\"\"print(blockchain.add_medical_record(\n    patient_id=\"123456\",\n    full_name=\"John Doe\",\n    dob=\"1990-05-20\",\n    gender=\"Male\",\n    address=\"123 Street, NY, USA\",\n    phone=\"123-456-7890\",\n    email=\"john.doe@example.com\",",
+        "detail": "test",
         "documentation": {}
     }
 ]

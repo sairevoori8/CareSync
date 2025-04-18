@@ -1,82 +1,104 @@
 import hashlib
-import time
+import datetime
 import json
-from uuid import uuid4
-from cryptography.fernet import Fernet
-
-class Block:
-    def __init__(self, index, previous_hash, timestamp, data, validator):
-        self.index = index
-        self.previous_hash = previous_hash
-        self.timestamp = timestamp
-        self.data = data
-        self.validator = validator
-        self.hash = self.calculate_hash()
-    
-    def calculate_hash(self):
-        block_string = json.dumps(self.__dict__, sort_keys=True)
-        return hashlib.sha256(block_string.encode()).hexdigest()
+from dbConnection import get_db, get_cipher  # Import encryption functions
 
 class Blockchain:
     def __init__(self):
-        self.chain = [self.create_genesis_block()]
-        self.validators = set()
-        self.roles = {}
-        self.encryption_key = Fernet.generate_key()
-        self.cipher = Fernet(self.encryption_key)
-        self.nodes = set()
-    
-    def create_genesis_block(self):
-        return Block(0, "0", time.time(), "Genesis Block", "System")
-    
-    def add_validator(self, validator_id, role):
-        self.validators.add(validator_id)
-        self.roles[validator_id] = role
-    
-    def encrypt_data(self, data):
-        return self.cipher.encrypt(json.dumps(data).encode()).decode()
-    
-    def decrypt_data(self, encrypted_data):
-        return json.loads(self.cipher.decrypt(encrypted_data.encode()).decode())
-    
-    def add_block(self, data, validator):
-        if validator not in self.validators:
-            raise ValueError("Unauthorized validator")
-        if self.roles.get(validator) not in ["doctor", "admin"]:
-            raise ValueError("Insufficient permissions")
-        
-        encrypted_data = self.encrypt_data(data)
-        last_block = self.chain[-1]
-        new_block = Block(len(self.chain), last_block.hash, time.time(), encrypted_data, validator)
-        self.chain.append(new_block)
-        return new_block
-    
-    def is_chain_valid(self):
-        for i in range(1, len(self.chain)):
-            prev, curr = self.chain[i - 1], self.chain[i]
-            if curr.previous_hash != prev.hash or curr.hash != curr.calculate_hash():
-                return False
-        return True
-    
-    def get_patient_records(self, patient_id):
-        records = []
-        for block in self.chain:
-            try:
-                decrypted_data = self.decrypt_data(block.data)
-                if decrypted_data.get("patient_id") == patient_id:
-                    records.append(decrypted_data)
-            except:
-                continue
-        return records
-    
-    def display_chain(self):
-        for block in self.chain[1:]:  
-            try:
-                decrypted_data = self.decrypt_data(block.data)
-                print(f"Index: {block.index}")
-                print(f"Hash: {block.hash}")
-                print(f"Data: {block.data}")
-                print("-" * 50)
-            except Exception as e:
-                print(f"Error decrypting block {block.index}: {e}")
+        self.db = get_db()
+        self.collection = self.db["medicalrecords"]
+        self.cipher = get_cipher()  # Get the cipher for encryption
 
+        self.chain = []
+        self.pending_records = []
+
+        if self.collection.count_documents({}) == 0:
+            self.create_genesis_block()
+        else:
+            self.load_chain_from_db()
+
+    def create_genesis_block(self):
+        genesis_block = {
+            'index': 1,
+            'timestamp': str(datetime.datetime.now()),
+            'records': [],
+            'previous_hash': "0",
+            'nonce': 0,
+            'hash': self.calculate_hash(1, [], "0", 0)
+        }
+        self.chain.append(genesis_block)
+        self.collection.insert_one(genesis_block)
+
+    def encrypt_data(self, data):
+        """Encrypts medical data."""
+        json_data = json.dumps(data)  # Convert to JSON string
+        encrypted = self.cipher.encrypt(json_data.encode())  # Encrypt
+        return encrypted.decode()  # Convert bytes to string
+
+    def decrypt_data(self, encrypted_data):
+        """Decrypts medical data."""
+        decrypted = self.cipher.decrypt(encrypted_data.encode()).decode()  # Decrypt and convert to string
+        return json.loads(decrypted)  # Convert JSON string back to dictionary
+
+    def calculate_hash(self, index, records, previous_hash, nonce):
+        block_string = json.dumps({
+            'index': index,
+            'records': records,
+            'previous_hash': previous_hash,
+            'nonce': nonce
+        }, sort_keys=True)
+        return hashlib.sha256(block_string.encode()).hexdigest()
+
+    def proof_of_work(self, index, records, previous_hash):
+        nonce = 0
+        while True:
+            hash_value = self.calculate_hash(index, records, previous_hash, nonce)
+            if hash_value[:4] == "0000":  # Proof-of-work difficulty
+                return nonce, hash_value
+            nonce += 1
+
+    def add_medical_record(self, **kwargs):
+        """Encrypts and adds medical records."""
+        encrypted_record = self.encrypt_data(kwargs)  # Encrypt the entire record
+        self.pending_records.append(encrypted_record)
+        return f"Encrypted record added to pending transactions (Total: {len(self.pending_records)})"
+
+    def mine_block(self):
+        if not self.pending_records:
+            return "No pending records to mine."
+
+        previous_block = self.chain[-1]
+        index = previous_block['index'] + 1
+        previous_hash = previous_block['hash']
+        nonce, block_hash = self.proof_of_work(index, self.pending_records, previous_hash)
+
+        new_block = {
+            'index': index,
+            'timestamp': str(datetime.datetime.now()),
+            'records': self.pending_records,  # Encrypted records
+            'previous_hash': previous_hash,
+            'nonce': nonce,
+            'hash': block_hash
+        }
+
+        self.chain.append(new_block)
+        self.collection.insert_one(new_block)
+        self.pending_records = []
+
+        return f"Block #{index} mined and stored in MongoDB!"
+
+    def load_chain_from_db(self):
+        self.chain = list(self.collection.find().sort("index", 1))
+
+    def get_last_block(self):
+        return self.chain[-1] if self.chain else None
+
+    def get_block(self, index):
+        """Retrieves and decrypts a block's records by index."""
+        block = self.collection.find_one({"index": index})
+        if not block:
+            return "Block not found."
+
+        decrypted_records = [self.decrypt_data(record) for record in block["records"]]
+        block["records"] = decrypted_records  # Replace encrypted records with decrypted ones
+        return block
