@@ -1,0 +1,71 @@
+*{
+    font-family: "Montagu Slab";
+    padding: 0;
+    margin: 0;
+}
+.header{
+    display: flex;
+    flex-direction: row;
+    background-color: rgba(92, 167, 136, 0.84);
+    align-items: center;
+    height: 60px;
+}
+.name{
+    padding-left: 20px;
+    color: white;
+    font-weight: 500;
+    font-size: 30px;
+
+}
+.spacer{
+    width:80%
+}
+.addtabs{
+    display: flex;
+    flex-direction: row;
+    font-size: 20px;
+    gap:20px;
+    padding-right: 10px;
+    
+}
+a:link, a:visited {
+    color: white;
+    text-decoration: none;
+    cursor: auto;
+  }
+  
+  a:link:active, a:visited:active {
+    color: (internal value);
+  }
+.main {
+    background-image: url('assets/background.png');
+    background-size: cover; /* Ensures image covers entire element */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents tiling */
+    height: 90vh;
+    margin: 0; /* Removes default body margin */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: rgba(87, 158, 128, 0.84) ;
+}
+.footer{
+    background-color: rgba(92, 167, 136, 0.84);
+    align-content: center;
+    color: white;
+    height: 8vh;
+    padding-left: 40%;
+}
+.title{
+    font-weight: 800;
+    font-size: 40px;
+
+}
+.quote{
+    font-size: 20px;
+}
+.content{
+    color: black;
+    padding: 20px;
+}

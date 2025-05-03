@@ -1,0 +1,138 @@
+/* Base Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f9f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  .login-container {
+    width: 100%;
+    max-width: 400px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 20px;
+  }
+  
+  .login-header {
+    background-color: rgba(92, 167, 136, 0.84);
+    color: white;
+    padding: 30px;
+    text-align: center;
+  }
+  
+  .login-header h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+  }
+  
+  .login-header p {
+    margin: 10px 0 0;
+    opacity: 0.9;
+    font-size: 14px;
+  }
+  
+  /* Form Styles */
+  .login-form {
+    padding: 30px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 14px;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+  }
+  
+  .form-group input:focus {
+    outline: none;
+    border-color: rgba(92, 167, 136, 0.84);
+    box-shadow: 0 0 0 3px rgba(92, 167, 136, 0.2);
+  }
+  
+  .forgot-password {
+    display: block;
+    text-align: right;
+    margin-top: 8px;
+    font-size: 13px;
+    color: rgba(92, 167, 136, 0.84);
+    text-decoration: none;
+  }
+  
+  .forgot-password:hover {
+    text-decoration: underline;
+  }
+  
+  /* Button Styles */
+  .login-button {
+    width: 100%;
+    padding: 14px;
+    background-color: rgba(92, 167, 136, 0.84);
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+  }
+  
+  .login-button:hover {
+    background-color: rgba(92, 167, 136, 1);
+  }
+  
+  /* Signup Link */
+  .signup-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .signup-link a {
+    color: rgba(92, 167, 136, 0.84);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .signup-link a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 480px) {
+    .login-container {
+      margin: 10px;
+    }
+    
+    .login-header {
+      padding: 20px;
+    }
+    
+    .login-form {
+      padding: 20px;
+    }
+  }
