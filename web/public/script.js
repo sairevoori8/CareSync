@@ -23,7 +23,13 @@ document.getElementById('healthForm').addEventListener('submit', function (e) {
       if (data.success) {
         alert('Form submitted successfully!');
         const resultDiv = document.getElementById('result');  // Make sure this exists
-        resultDiv.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+        resultDiv.style.display = 'block';
+        resultDiv.innerHTML = `
+                 <div class="result-box">
+                  <h2>Block Added Successfully ✅</h2>
+                      <p><strong>Block Index:</strong> ${data.block_data.index}</p>
+                  <p><strong>Block Hash:</strong> <code>${data.block_data.hash}</code></p>
+                  </div>`;
       } else {
         alert('Submission failed. ' + data.message);  // Handle server-specific errors
       }

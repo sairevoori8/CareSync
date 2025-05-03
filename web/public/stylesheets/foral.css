@@ -1,0 +1,46 @@
+*{
+    padding: 0px;
+    margin: 0px;
+  }
+.header{
+    display: flex;
+    flex-direction: row;
+    background-color: rgba(92, 167, 136, 0.84);
+    align-items: center;
+    height: 60px;
+}
+.name{
+    padding-left: 20px;
+    color: white;
+    font-weight: 500;
+    font-size: 30px;
+
+}
+.spacer{
+    width:80%
+}
+.addtabs{
+    display: flex;
+    flex-direction: row;
+    font-size: 18px;
+    gap:20px;
+    padding-right: 10px;
+    
+}
+a:link, a:visited {
+    color: white;
+    text-decoration: none;
+    cursor: auto;
+  }
+  
+  a:link:active, a:visited:active {
+    color: (internal value);
+  }
+.footer{
+    background-color: rgba(92, 167, 136, 0.84);
+    align-content: center;
+    color: white;
+    padding-left: 40%;
+    bottom: 0;
+    position: relative;
+}

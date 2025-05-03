@@ -40,12 +40,10 @@ const Frame = () => {
 						<Text style={styles.fontT}>Forgot Password</Text>
 					</TouchableOpacity>
 				</View>
-				<TouchableOpacity onPress={() => router.push('./register')}>
+				<TouchableOpacity onPress={() => router.push('./homepage')}>
 					<Text style={styles.btn}>Login</Text>
 				</TouchableOpacity>
 				<Image style={styles.desk} source={require("../assets/images/deskdoc.png")} />
-
-
 			</View>
 		</View>
 	);

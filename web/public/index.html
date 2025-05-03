@@ -1,50 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Health Information Form</title>
   <link rel="stylesheet" href="stylesheets/styles.css">
+  <link rel="stylesheet" href="stylesheets/foral.css">
 </head>
-<body>
-  <h1>Health Information Form</h1>
-  <form id="healthForm">
-    <label>Full Name: <input type="text" name="name" required></label><br>
-    <label>Age: <input type="number" name="age" required></label><br>
-    <label>Gender:
-      <select name="gender" required>
-        <option value="">--Select--</option>
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-        <option value="Other">Other</option>
-      </select>
-    </label><br>
-    <label>Address: <input type="text" name="address"></label><br>
-    <label>Phone: <input type="text" name="phone"></label><br>
-    <label>Email: <input type="email" name="email"></label><br>
-    <label>Emergency Contact: <input type="text" name="emergency_contact"></label><br>
-    <label>Occupation: <input type="text" name="occupation"></label><br>
-    <label>Insurance Provider: <input type="text" name="insurance"></label><br>
-    <label>Height (cm): <input type="number" name="height"></label><br>
-    <label>Weight (kg): <input type="number" name="weight"></label><br>
-    <label>Activity Level:
-      <select name="activity">
-        <option value="low">Low</option>
-        <option value="moderate">Moderate</option>
-        <option value="high">High</option>
-      </select>
-    </label><br>
-    <label>Lifestyle: <input type="text" name="lifestyle" placeholder="e.g., Non-smoker, occasional drinker"></label><br>
-    <label>Past Illnesses: <input type="text" name="past_illnesses" placeholder="e.g., Flu, Chickenpox"></label><br>
-    <label>Past Surgeries: <input type="text" name="past_surgeries" placeholder="e.g., Appendix Removal"></label><br>
-    <label>Family History: <input type="text" name="family_history" placeholder="e.g., Diabetes"></label><br>
-    <label>Medications: <input type="text" name="medications" placeholder="e.g., Paracetamol"></label><br>
-    <label>Allergies: <input type="text" name="allergies" placeholder="e.g., Peanuts"></label><br>
-    <label>Chronic Conditions: <input type="text" name="chronic_conditions" placeholder="e.g., Hypertension"></label><br>
-    <label>Vaccinations: <input type="text" name="vaccinations" placeholder="e.g., COVID-19, Hepatitis B"></label><br>
-    <br><button type="submit">Submit</button>
-  </form>
-  <div id="result" style="margin-top: 20px; background: #f4f4f4; padding: 10px;"></div>
 
+<body>
+  <div class="header">
+    <div class="name">CareSync</div>
+    <div class="spacer"></div>
+    <div class="addtabs">
+      <a href="index.html">AddUser</a>
+      <a href="show.html">GetUser</a>
+      <a href="login.html">Analysis</a>
+      <a href="home.html">Signout</a>
+    </div>
+  </div>
+  <div class="main">
+    <h1>Health Information Form</h1>
+    <form id="healthForm">
+      <label>Full Name: <input type="text" name="name" required></label><br>
+      <label>Age: <input type="number" name="age" required></label><br>
+      <label>Gender:
+        <select name="gender" required>
+          <option value="">--Select--</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+      </label><br>
+      <label>Address: <input type="text" name="address"></label><br>
+      <label>Phone: <input type="text" name="phone"></label><br>
+      <label>Email: <input type="email" name="email"></label><br>
+      <label>Emergency Contact: <input type="text" name="emergency_contact"></label><br>
+      <label>Occupation: <input type="text" name="occupation"></label><br>
+      <label>Insurance Provider: <input type="text" name="insurance"></label><br>
+      <label>Height (cm): <input type="number" name="height"></label><br>
+      <label>Weight (kg): <input type="number" name="weight"></label><br>
+      <label>Activity Level:
+        <select name="activity">
+          <option value="low">Low</option>
+          <option value="moderate">Moderate</option>
+          <option value="high">High</option>
+        </select>
+      </label><br>
+      <label>Lifestyle: <input type="text" name="lifestyle"
+          placeholder="e.g., Non-smoker, occasional drinker"></label><br>
+      <label>Past Illnesses: <input type="text" name="past_illnesses" placeholder="e.g., Flu, Chickenpox"></label><br>
+      <label>Past Surgeries: <input type="text" name="past_surgeries" placeholder="e.g., Appendix Removal"></label><br>
+      <label>Family History: <input type="text" name="family_history" placeholder="e.g., Diabetes"></label><br>
+      <label>Medications: <input type="text" name="medications" placeholder="e.g., Paracetamol"></label><br>
+      <label>Allergies: <input type="text" name="allergies" placeholder="e.g., Peanuts"></label><br>
+      <label>Chronic Conditions: <input type="text" name="chronic_conditions"
+          placeholder="e.g., Hypertension"></label><br>
+      <label>Vaccinations: <input type="text" name="vaccinations" placeholder="e.g., COVID-19, Hepatitis B"></label><br>
+      <br><button type="submit">Submit</button>
+    </form>
+    <div id="result" class="res" >Result</div>
+  </div>
+  <div class="footer">Any query contact us at caresync@queries.com</div>
   <script src="script.js"></script>
 </body>
+
 </html>

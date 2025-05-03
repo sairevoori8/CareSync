@@ -1,6 +1,6 @@
 /* General Styles */
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.main {
+  font-family: "Montagu Slab";
   line-height: 1.6;
   color: #333;
   max-width: 800px;
@@ -72,10 +72,7 @@ button[type="submit"]:hover {
 }
 
 /* Result Section */
-#result {
-  border-radius: 8px;
-  display: none; /* Hidden by default */
-}
+
 
 /* Responsive Design */
 @media (min-width: 600px) {
@@ -106,4 +103,16 @@ button[type="submit"]:hover {
   color: #aaa;
   font-style: italic;
 }
+.res{
+  background-color: white;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+  white-space: pre-wrap;
+  font-size: 14px;
+  color: #333;
+  display: none; /* remains hidden until JS makes it visible */
+}
+
 

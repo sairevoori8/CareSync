@@ -1,4 +1,4 @@
 .env
-.vscode
+.vscode/
 .venv
 __pycache__git

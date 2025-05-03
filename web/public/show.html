@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>User Detail Viewer</title>
+  <link rel="stylesheet" href="stylesheets/showstyle.css">
+  <link rel="stylesheet" href="stylesheets/foral.css">
+</head>
+
+<body>
+  <div class=" con">
+    <div class="header">
+      <div class="name">CareSync</div>
+      <div class="spacer"></div>
+      <div class="addtabs">
+        <a href="index.html">AddUser</a>
+        <a href="show.html">GetUser</a>
+        <a href="login.html">Analysis</a>
+        <a href="home.html">Signout</a>
+      </div>
+    </div>
+    <div class="container">
+      <h2>User Details Fetcher</h2>
+      <label for="userIndex">Enter User Index:</label>
+      <input type="number" id="userIndex" min="0" />
+      <button onclick="get_data()">Fetch Data</button>
+      <div id="result"></div>
+
+    </div>
+  </div>
+  <script src="showscript.js"></script>
+</body>
+
+</html>

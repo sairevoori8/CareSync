@@ -1,0 +1,67 @@
+ .container {
+   height: 100vh;
+   margin: auto;
+   background: #ffffff;
+   padding: 2rem;
+   border-radius: 8px;
+   box-shadow: 0 0 10px rgba(92, 167, 136, 0.3);
+   font-family: "Montagu Slab";
+   background: #f0f5f3;
+   color: #333;
+   margin: 0;
+   padding: 2rem;
+ }
+
+ h2 {
+   color: rgba(92, 167, 136, 0.84);
+   text-align: center;
+ }
+
+ input,
+ button {
+   padding: 0.6rem;
+   margin: 0.5rem 0;
+   width: calc(100% - 20px);
+   border: 1px solid #ccc;
+   border-radius: 4px;
+   display: block;
+ }
+
+ button {
+   background-color: rgba(92, 167, 136, 0.84);
+   color: white;
+   font-weight: bold;
+   cursor: pointer;
+ }
+
+ button:hover {
+   background-color: rgba(72, 147, 116, 0.9);
+ }
+
+ table {
+   width: 100%;
+   margin-top: 2rem;
+   border-collapse: collapse;
+   background: #fff;
+ }
+
+ th,
+ td {
+   padding: 12px 15px;
+   border: 1px solid #ccc;
+   text-align: left;
+ }
+
+ th {
+   background-color: rgba(92, 167, 136, 0.84);
+   color: white;
+ }
+
+ .error {
+   color: red;
+   margin-top: 1rem;
+ }
+ .con{
+  display: flex;
+  flex-direction: column;
+ }

@@ -57,9 +57,9 @@ class Blockchain:
                 return nonce, hash_value
             nonce += 1
 
-    def add_medical_record(self, **kwargs):
+    def add_medical_record(self,record_dict):
         """Encrypts and adds medical records."""
-        encrypted_record = self.encrypt_data(kwargs)  # Encrypt the entire record
+        encrypted_record = self.encrypt_data(record_dict)  # Encrypt the entire record
         self.pending_records.append(encrypted_record)
         return f"Encrypted record added to pending transactions (Total: {len(self.pending_records)})"
 
@@ -85,7 +85,11 @@ class Blockchain:
         self.collection.insert_one(new_block)
         self.pending_records = []
 
-        return f"Block #{index} mined and stored in MongoDB!"
+        re_dict={
+            'index':index,
+            'hash':block_hash
+        }
+        return re_dict
 
     def load_chain_from_db(self):
         self.chain = list(self.collection.find().sort("index", 1))
