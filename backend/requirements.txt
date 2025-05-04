@@ -3,3 +3,6 @@ pymongo
 cryptography
 python-dotenv
 flask-cors
+pandas
+joblib
+scikit-learn

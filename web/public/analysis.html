@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analysis</title>
+  <link rel="stylesheet" href="stylesheets/analysis.css">
+  <link rel="stylesheet" href="stylesheets/foral.css">
+</head>
+
+<body>
+  <div>
+    <div class="header">
+      <div class="name">CareSync</div>
+      <div class="spacer"></div>
+      <div class="addtabs">
+        <a href="index.html">AddUser</a>
+        <a href="show.html">GetUser</a>
+        <a href="analysis.html">Analysis</a>
+        <a href="home.html">Signout</a>
+      </div>
+    </div>
+    <div>
+      <br>
+      <h1>Desease Predection</h1>
+      <form action="/predict" method="POST">
+        <div class="symptom-group">
+          <label><input type="checkbox" name="symptoms" value="muscle_pain"> muscle_pain</label>
+          <label><input type="checkbox" name="symptoms" value="itching"> itching</label>
+          <label><input type="checkbox" name="symptoms" value="altered_sensorium"> altered_sensorium</label>
+          <label><input type="checkbox" name="symptoms" value="dark_urine"> dark_urine</label>
+          <label><input type="checkbox" name="symptoms" value="high_fever"> high_fever</label>
+          <label><input type="checkbox" name="symptoms" value="mild_fever"> mild_fever</label>
+          <label><input type="checkbox" name="symptoms" value="family_history"> family_history</label>
+          <label><input type="checkbox" name="symptoms" value="nausea"> nausea</label>
+          <label><input type="checkbox" name="symptoms" value="yellowing_of_eyes"> yellowing_of_eyes</label>
+          <label><input type="checkbox" name="symptoms" value="sweating"> sweating</label>
+          <label><input type="checkbox" name="symptoms" value="unsteadiness"> unsteadiness</label>
+          <label><input type="checkbox" name="symptoms" value="chest_pain"> chest_pain</label>
+          <label><input type="checkbox" name="symptoms" value="fatigue"> fatigue</label>
+          <label><input type="checkbox" name="symptoms" value="abdominal_pain"> abdominal_pain</label>
+          <label><input type="checkbox" name="symptoms" value="joint_pain"> joint_pain</label>
+          <label><input type="checkbox" name="symptoms" value="diarrhoea"> diarrhoea</label>
+          <label><input type="checkbox" name="symptoms" value="lack_of_concentration"> lack_of_concentration</label>
+          <label><input type="checkbox" name="symptoms" value="red_spots_over_body"> red_spots_over_body</label>
+          <label><input type="checkbox" name="symptoms" value="loss_of_appetite"> loss_of_appetite</label>
+          <label><input type="checkbox" name="symptoms" value="vomiting"> vomiting</label>
+          <label><input type="checkbox" name="symptoms" value="chills"> chills</label>
+          <label><input type="checkbox" name="symptoms" value="breathlessness"> breathlessness</label>
+          <label><input type="checkbox" name="symptoms" value="bladder_discomfort"> bladder_discomfort</label>
+          <label><input type="checkbox" name="symptoms" value="rusty_sputum"> rusty_sputum</label>
+          <label><input type="checkbox" name="symptoms" value="headache"> headache</label>
+          <label><input type="checkbox" name="symptoms" value="dischromic _patches"> dischromic _patches</label>
+          <label><input type="checkbox" name="symptoms" value="back_pain"> back_pain</label>
+          <label><input type="checkbox" name="symptoms" value="cough"> cough</label>
+          <label><input type="checkbox" name="symptoms" value="receiving_unsterile_injections">
+            receiving_unsterile_injections</label>
+          <label><input type="checkbox" name="symptoms" value="mucoid_sputum"> mucoid_sputum</label>
+          <label><input type="checkbox" name="symptoms" value="red_sore_around_nose"> red_sore_around_nose</label>
+          <label><input type="checkbox" name="symptoms" value="stomach_bleeding"> stomach_bleeding</label>
+          <label><input type="checkbox" name="symptoms" value="abnormal_menstruation"> abnormal_menstruation</label>
+          <label><input type="checkbox" name="symptoms" value="weight_loss"> weight_loss</label>
+          <label><input type="checkbox" name="symptoms" value="neck_pain"> neck_pain</label>
+          <label><input type="checkbox" name="symptoms" value="stomach_pain"> stomach_pain</label>
+          <label><input type="checkbox" name="symptoms" value="internal_itching"> internal_itching</label>
+          <label><input type="checkbox" name="symptoms" value="muscle_weakness"> muscle_weakness</label>
+          <label><input type="checkbox" name="symptoms" value="coma"> coma</label>
+          <label><input type="checkbox" name="symptoms" value="continuous_feel_of_urine">
+            continuous_feel_of_urine</label>
+          <label><input type="checkbox" name="symptoms" value="passage_of_gases"> passage_of_gases</label>
+          <label><input type="checkbox" name="symptoms" value="nodal_skin_eruptions"> nodal_skin_eruptions</label>
+          <label><input type="checkbox" name="symptoms" value="spotting_ urination"> spotting_ urination</label>
+          <label><input type="checkbox" name="symptoms" value="slurred_speech"> slurred_speech</label>
+          <label><input type="checkbox" name="symptoms" value="polyuria"> polyuria</label>
+          <label><input type="checkbox" name="symptoms" value="blister"> blister</label>
+          <label><input type="checkbox" name="symptoms" value="movement_stiffness"> movement_stiffness</label>
+          <label><input type="checkbox" name="symptoms" value="blackheads"> blackheads</label>
+          <label><input type="checkbox" name="symptoms" value="pain_behind_the_eyes"> pain_behind_the_eyes</label>
+          <label><input type="checkbox" name="symptoms" value="swelled_lymph_nodes"> swelled_lymph_nodes</label>
+        </div>
+
+        <button class="submit-btn" type="submit">Predict Disease</button>
+      </form>
+    </div>
+    <div id="overlay"></div>
+    <div id="popup">
+    </div>
+  </div>
+  <script src="a_send.js"></script>
+</body>
+
+</html>

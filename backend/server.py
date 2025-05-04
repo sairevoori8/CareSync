@@ -2,6 +2,7 @@ from flask import request,Flask,jsonify
 from flask_cors import CORS
 from blockchain import Blockchain
 from helperfunc import convert_to_json
+from model import modelPredect
 
 app = Flask(__name__)
 CORS(app)
@@ -26,6 +27,13 @@ def insert_data():
     print(block_data)
     return jsonify({"success": True, "block_data": block_data}) 
 
+@app.route('/analysis',methods=['POST'])
+def predict():
+    info = request.get_json()
+    print(info)
+    predection = modelPredect(info)
+    print(predection)
+    return jsonify(predection)
 
 if __name__ == "__main__" :
     blockchain = Blockchain()
