@@ -42,7 +42,7 @@ a:link, a:visited {
     background-size: cover; /* Ensures image covers entire element */
     background-position: center; /* Centers the image */
     background-repeat: no-repeat; /* Prevents tiling */
-    height: 90vh;
+
     margin: 0; /* Removes default body margin */
     display: flex;
     align-items: center;
@@ -68,4 +68,43 @@ a:link, a:visited {
 .content{
     color: black;
     padding: 20px;
+}
+.info{
+    display: flex;
+    background-color:  rgba(92, 167, 136, 0.84);
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+}
+.dis{
+    color: white;
+    font-size: 30px;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    gap:10px;
+    width: 60vw;
+}
+.spa{
+    padding: 10px;
+}
+.subh{
+    color: rgba(92, 167, 136, 0.84);
+    font-size: 35px;
+    text-align: center;
+    font-weight: 800;
+    
+}
+.subhed{
+    font-size: 20px;
+    text-align: center;
+}
+.how{
+    font-size: 20px;
+    text-align: center;
 }

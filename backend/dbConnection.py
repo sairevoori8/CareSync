@@ -5,7 +5,9 @@ import os
 
 load_dotenv()
 SECRET_KEY = os.getenv("KEY")
-mongourl = os.getenv("MongoConnection")
+#mongourl = os.getenv("MongoConnection")
+mongourl = "mongodb://localhost:27017"
+print(mongourl)
 
 def get_db():
     

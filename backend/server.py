@@ -34,6 +34,16 @@ def predict():
     predection = modelPredect(info)
     print(predection)
     return jsonify(predection)
+@app.route('/basic')
+def displayhome():
+    ans = blockchain.get_last_block()
+    block = ans['index']
+    lasthash = ans['hash']
+    Tosend = {
+        'Blocks':block,
+        'lasthash':lasthash
+    }
+    return jsonify(Tosend)
 
 if __name__ == "__main__" :
     blockchain = Blockchain()
